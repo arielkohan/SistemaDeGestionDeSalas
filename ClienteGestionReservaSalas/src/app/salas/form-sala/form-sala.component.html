@@ -1,0 +1,87 @@
+<md-progress-bar *ngIf="loading" color="primary" mode="indeterminate"></md-progress-bar>
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="70">
+      <md-card >
+        <md-card-title layout>
+          {{ (esModificacion) ? "Editar Sala" : "Crear Sala"}}
+        </md-card-title>
+        <md-divider></md-divider>
+				<form class="form" (ngSubmit)="onSubmit()" #salaForm="ngForm" >
+					<md-card-content>
+						<!-- <md-input-container class="full-width">
+							<input md-input placeholder="Company (disabled)" disabled value="Google">
+						</md-input-container> -->
+						<table class="full-width" cellspacing="0">
+							<tr>
+								<td><md-input-container class="full-width">
+										<input  type="text" md-input placeholder="Nombre de sala" 
+										required=""
+										name="nombreSala"
+										[(ngModel)]="sala.nombre">
+										
+									</md-input-container>
+									<div  class="alert alert-danger">
+										<md-chip *ngIf="formErrors.nombreSala" color="warn" selected="true">
+										{{ formErrors.nombreSala }}
+										</md-chip>
+									</div>
+								</td>
+								<td>
+									<md-input-container class="full-width">
+									<input  type="text" md-input placeholder="Ubicación" 
+									required=""
+									name="ubicacionSala"
+									[(ngModel)]="sala.ubicacion"
+									>
+									</md-input-container>
+									<div  class="alert alert-danger">
+										<md-chip *ngIf="formErrors.ubicacionSala" color="warn" selected="true">
+										{{ formErrors.ubicacionSala }}
+										</md-chip>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<table class="full-width" cellspacing="0">
+							<tr>
+								<td>
+									<md-input-container class="full-width">
+										<input  type="number" md-input class="capacidadInput" placeholder="Capacidad Máxima" 
+										required=""
+										min="1"
+										name="capacidadSala"
+										[(ngModel)]="sala.capacidad"
+										>
+									</md-input-container>
+									<div  class="alert alert-danger">
+										<md-chip *ngIf="formErrors.capacidadSala" color="warn" selected="true">
+										{{ formErrors.capacidadSala }}
+										</md-chip>
+									</div>
+								</td>
+								<td>
+									<md-select placeholder="Tipo de Sala" [(ngModel)]="tipoSala" name="tipoSala"  class="full-width" required="" >
+										<md-option *ngFor="let tipo of tipos" [value]="tipo">
+											{{tipo.descripcion}}
+										</md-option>
+									</md-select>
+									<div  class="alert alert-danger">
+										<md-chip *ngIf="formErrors.tipoSala" color="warn" selected="true">
+										{{ formErrors.tipoSala }}
+										</md-chip>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</md-card-content>
+	    	<!-- <md-divider></md-divider> -->
+					<md-card-actions class="text-right">
+						<a [routerLink]="['/salas']">
+							<button tabindex="-1" type="button" md-raised-button class="">ATRAS</button>
+						</a>
+						<button type="submit" md-raised-button color="accent" class="" [disabled]="!salaForm.form.valid">{{(esModificacion) ? "EDITAR" : "CREAR"}}</button>
+					</md-card-actions>
+			  </form>
+      </md-card>
+    </div>
+</div>

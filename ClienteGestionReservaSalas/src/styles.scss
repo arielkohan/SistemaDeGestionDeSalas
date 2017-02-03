@@ -1,0 +1,56 @@
+@import "theme";
+// You can add global styles to this file that will cascade like normal CSS
+
+// Active icon color in list nav
+md-nav-list {
+    [md-list-item].active {
+        md-icon[md-list-avatar] {
+            background-color: md-color($accent);
+            color: md-color($accent, default-contrast)
+        }
+        md-icon[md-list-icon] {
+            color: md-color($accent);
+        }
+    }
+}
+
+md-progress-bar{
+    display:block;
+    position: fixed !important;
+    top: 0 ;
+    right: 0;
+    left:0;
+    z-index: 99999999999;
+}
+
+.primary-bg{
+    background-color: md-color($primary) !important;
+}
+.accent-bg{
+    background-color: md-color($accent) !important;
+}
+.warn-bg{
+    background-color: md-color($warn) !important;
+}
+
+.color-white{
+    color: white !important;
+}
+
+// Custom style for loading elements without height
+.will-load {
+    min-height: 80px;
+}
+// Href line height wasn't right for md-icon-button
+a[md-icon-button] {
+    line-height: 36px;
+}
+
+// Capitalize
+.text-capital {
+  text-transform: capitalize;
+}
+
+md-card{
+    border-radius: 10px !important;
+}

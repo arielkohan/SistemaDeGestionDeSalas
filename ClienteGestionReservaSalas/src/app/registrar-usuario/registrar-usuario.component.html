@@ -1,0 +1,106 @@
+<div layout="column" layout-fill>
+  <md-toolbar color="primary" class="md-whiteframe-z1">
+    <span>Login</span>
+    <button md-raised-button color="accent" class="toolbar-button-custom" (click)="login()">Iniciar Sesión</button>
+  </md-toolbar>
+  <div class="md-content" layout-padding flex>
+    <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+      <div flex-gt-xs="70">
+       <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+          <md-card-title><!-- <md-icon class="md-icon-logo" svgIcon="assets:covalent"></md-icon> --> 
+            <img class="mini-icon" src="../assets/icons/musimundo-logo.png">
+            Registrar usuario
+          </md-card-title>
+          <!--<md-card-subtitle>Una vez que cambie la contraseña no podrá volver atras.</md-card-subtitle>-->
+          <md-divider></md-divider>
+          <md-card-content>
+            <form #registrarUsuarioForm="ngForm">
+               <div layout="row">
+                <md-input-container flex> 
+                  <input md-input #userElement #emailControl="ngModel" placeholder="Correo electrónico" type="email" name="email" [(ngModel)]="email" required>
+                  <span md-prefix><md-icon>email</md-icon></span>
+                  <md-hint align="start">
+                    <span [hidden]="!emailControl.errors?.required || emailControl.pristine" class="tc-red-600">Required</span>
+                  </md-hint>
+                </md-input-container>
+              </div>
+               <div layout-gt-xs="row">
+                  <div flex-gt-xs="50">
+                    <md-input-container flex> 
+                      <input md-input #userElement #nameControl="ngModel" placeholder="Nombre" type="text" name="name" [(ngModel)]="nombre" required>
+                      <span md-prefix><md-icon>info</md-icon></span>
+                      <md-hint align="start">
+                        <span [hidden]="!nameControl.errors?.required || nameControl.pristine" class="tc-red-600">Required</span>
+                      </md-hint>
+                    </md-input-container>
+                  </div>
+                  <div flex-gt-xs="50">
+                    <md-input-container flex> 
+                      <input md-input #userElement #lastNameControl="ngModel" placeholder="Apellido" type="text" name="lastName" [(ngModel)]="apellido" required>
+                      <span md-prefix><md-icon>keyboard_arrow_right</md-icon></span>
+                      <md-hint align="start">
+                        <span [hidden]="!lastNameControl.errors?.required || lastNameControl.pristine" class="tc-red-600">Required</span>
+                      </md-hint>
+                    </md-input-container>
+                  </div>
+              </div>
+               <div layout-gt-xs="row">
+                  <div flex-gt-xs="50">
+                    <md-input-container flex> 
+                      <input md-input #userElement #legajoControl="ngModel" placeholder="Legajo" type="number" name="legajo" [(ngModel)]="legajo" required>
+                      <span md-prefix><md-icon>book</md-icon></span>
+                      <md-hint align="start">
+                        <span [hidden]="!legajoControl.errors?.required || legajoControl.pristine" class="tc-red-600">Required</span>
+                      </md-hint>
+                    </md-input-container>
+                  </div>
+                  <div flex-gt-xs="50">
+                    <md-input-container flex> 
+                      <input md-input #userElement #dniNameControl="ngModel" placeholder="Documento" type="text" name="dni" [(ngModel)]="dni" required>
+                      <span md-prefix><md-icon>person_pin</md-icon></span>
+                      <md-hint align="start">
+                        <span [hidden]="!dniNameControl.errors?.required || dniNameControl.pristine" class="tc-red-600">Required</span>
+                      </md-hint>
+                    </md-input-container>
+                  </div>
+              </div>
+              <div layout="row">
+                <md-input-container flex> 
+                  <input md-input #userElement #userControl="ngModel" placeholder="Nombre de usuario" type="text" maxlength="30" name="username" [(ngModel)]="username" required>
+                  <span md-prefix><md-icon>person</md-icon></span>
+                  <md-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                  </md-hint>
+                  <md-hint [hidden]="userElement.value.length < 20" align="end">{{userElement.value.length}} / 30</md-hint>
+                </md-input-container>
+              </div>
+              <div layout="row">
+                <md-input-container flex> 
+                  <input validateEqual="confirmPassword" reverse="true" minlength="6" md-input #passElement #newPassControl="ngModel" placeholder="Nueva Contraseña" type="password" name="newPassword" [(ngModel)]="newPassword" required>
+                  <span md-prefix><md-icon>lock</md-icon></span>
+                  <md-hint align="start">
+                    <span [hidden]="!newPassControl.errors?.required || newPassControl.pristine" class="tc-red-600">Required</span>
+                  </md-hint>
+                </md-input-container>
+              </div>
+              <div layout="row">
+                <md-input-container flex> 
+                  <input minlength="6" validateEqual="newPassword" reverse="false" md-input #passElement #confirmPassControl="ngModel" placeholder="Repita Contraseña" type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+                  <span md-prefix><md-icon>lock</md-icon></span>
+                  <md-hint align="start">
+                    <span [hidden]="!confirmPassControl.errors?.required || confirmPassControl.pristine" class="tc-red-600">Required</span>
+                    <span [hidden]="!confirmPassControl.errors?.validateEqual || confirmPassControl.pristine" class="tc-red-600">Debe ser igual al campo anterior</span>
+                  </md-hint>
+                </md-input-container>
+              </div>
+            </form>
+          </md-card-content>
+          <md-divider></md-divider>
+          <md-card-actions layout="row">
+            <button flex md-raised-button color="accent" [disabled]="!registrarUsuarioForm.form.valid" (click)="registerUser()">Registrar Usuario</button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>    
+  </div>
+</div>

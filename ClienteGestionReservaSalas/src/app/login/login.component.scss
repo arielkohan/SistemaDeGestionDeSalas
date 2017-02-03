@@ -1,0 +1,22 @@
+:host /deep/ {
+    .md-input-prefix {
+        width: 44px;
+        text-align: center;
+    }
+    md-divider {
+        display: block;
+        border-top-style: solid;
+        border-top-width: 1px;
+    }
+}
+
+.toolbar-button-custom{
+	
+	margin: 0 0 0 auto;
+    padding: 4px 40px;
+}
+
+.mini-icon{
+    height: 40px;
+    margin-bottom: -10px;
+}

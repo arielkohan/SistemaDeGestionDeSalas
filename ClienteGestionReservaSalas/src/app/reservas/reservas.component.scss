@@ -1,0 +1,62 @@
+@import "../../theme";
+
+
+.header-button-custom{
+    // margin: 5px 40px 10px;
+    padding: 5px 40px;
+}
+
+td-expansion-panel{
+	box-shadow: none;
+}
+
+.margin {
+    margin-top: 50px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+md-card{
+	padding-bottom: 20px;
+}
+.list-item:hover{
+    background: rgba(0,0,0,0.05);
+}
+
+md-icon.custom-position{
+	margin: 0 8px 0px;
+    position: relative;
+    top: 5px;
+}
+.grey-color span , .grey-color md-icon{
+	    color: #555;
+}
+.header-a{
+    margin: 5px 40px 10px;
+}
+
+
+.expansion-header{
+	margin: 0;
+	padding: 10px;
+	width: 100%;
+	
+	//background: #ccc !important;
+
+	md-icon{
+		margin-top: 10px;
+		.activate{
+			background: red !important;
+		}
+	}
+}
+
+
+ @media(max-width: 660px){
+
+md-list a[md-list-item] .md-list-item{
+        height: 90px;
+   
+}
+    }

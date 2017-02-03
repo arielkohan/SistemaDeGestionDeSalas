@@ -1,0 +1,102 @@
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="90">
+      <md-card >
+        <md-card-title layout>
+          <md-input-container class="text-sm" flex>
+            <input [(ngModel)]="buscarInput" type="text" md-input placeholder="Buscar encuestas por sala"/>
+            <span md-prefix><md-icon>search</md-icon></span>
+          </md-input-container>
+          <!--<a [routerLink]="['/salas/add']" class="header-a">
+            <button md-raised-button color="accent" class="header-button-custom">Nueva Reserva</button>
+          </a>-->
+        </md-card-title>
+
+
+
+        <td-expansion-panel #expansionOne label="label" sublabel="sublabel"  expand="true"><!-- (expanded)="expandedEvent()" (collapsed)="collapsedEvent()"-->
+        <template td-expansion-panel-header >
+          <h2 class="expansion-header"><md-icon class="" >keyboard_arrow_down</md-icon> 
+            Encuestas para completar
+          </h2>
+        </template>
+
+          <md-list class="">
+            <md-list-item>
+              <md-icon md-list-avatar>apps</md-icon>
+              <h3 md-line>Reservas</h3>
+              <span flex></span>
+              <span flex="40" class="md-body-1 tc-grey-500">Cuándo</span>
+              <!--<span flex="20" class="md-body-1 tc-grey-500"></span>-->
+              <span flex="40" class="md-body-1 tc-grey-500"></span>
+            </md-list-item>
+            <md-list-item *ngIf="reservasConEncuestasParaResponder.length <= 0">
+              <md-icon md-list-avatar>info</md-icon>
+              <h3 flex>No tienes encuestas para responder </h3>
+            </md-list-item>
+            <template let-item="$implicit" let-i="index" let-last="last" ngFor [ngForOf]="reservasConEncuestasParaResponder">
+              <a md-list-item class="pointer list-item" ><!--(click)="openDialog(item);"-->
+                <md-icon md-list-avatar>list</md-icon>
+                <h3 md-line>Sala {{item.sala.nombre}}</h3>
+                <p md-line> Ubicacion: {{item.sala.ubicacion}} </p>
+                <span flex></span>
+                <span flex="40" class="md-body-1 tc-grey-500">{{item.fechaInicio | date:'d-M-y HH:mm'}}</span>
+                <!--<span flex="20" class="md-body-1 tc-grey-500">
+                  <button md-raised-button  color="default" (click)="$event.stopPropagation();editReserva(item);">
+                    <md-icon class="tc-blue-600">edit</md-icon>
+                  </button>
+                </span>-->
+                <span flex="40" class="md-body-1 ">
+                  <button md-raised-button class="" color="accent" (click)="$event.stopPropagation();completarEncuestaDeReserva(item);">
+                    Completar Encuesta
+                  </button>
+                </span>
+              </a>
+              <md-divider *ngIf="!last" md-inset></md-divider>
+            </template>
+          </md-list>
+        
+      </td-expansion-panel>
+
+       <td-expansion-panel label="label" sublabel="sublabel"  ><!-- (expanded)="expandedEvent()" (collapsed)="collapsedEvent()"-->
+        <template td-expansion-panel-header >
+          <h2 class="expansion-header"><md-icon class="" >keyboard_arrow_down</md-icon> 
+            Reservas de Encuestas Respondidas
+          </h2>
+        </template>
+
+          <md-list class="">
+            <md-list-item>
+              <md-icon md-list-avatar>apps</md-icon>
+              <h3 md-line>Reservas</h3>
+              <span flex></span>
+              <!--<span flex="40" class="pad-left md-body-1 tc-grey-500 text-center">Responsable</span>-->
+              <span flex="40" class="md-body-1 tc-grey-500">Cuándo</span>
+              <span flex="20"></span>
+            </md-list-item>
+            <md-list-item *ngIf="reservasDeEncuestasRespondidas.length <= 0">
+              <md-icon md-list-avatar>info</md-icon>
+              <h3 flex>No hay encuestas completadas. </h3>
+            </md-list-item>
+            <template let-item="$implicit" let-i="index" let-last="last" ngFor [ngForOf]="reservasDeEncuestasRespondidas">
+              <a md-list-item class="pointer list-item" >
+                <md-icon md-list-avatar>list</md-icon>
+                <h3 md-line>Sala {{item.sala.nombre}}</h3>
+                <p md-line> Ubicacion: {{item.sala.ubicacion}} </p>
+                <span flex></span>
+                <!--<span flex="40" class="md-body-1 tc-grey-500 text-center">{{item.responsableNomYAp}}</span>-->
+                <span flex="40" class="md-body-1 tc-grey-500">{{item.fechaInicio | date:'d-M-y HH:mm'}}</span>
+                <span flex="20" class="md-body-1 tc-grey-500">
+                    <md-icon class="tc-white bgc-blue-700 icon-success"  >check</md-icon>
+                </span>
+                
+              </a>
+              <md-divider *ngIf="!last" md-inset></md-divider>
+            </template>
+          </md-list>
+        
+      </td-expansion-panel>
+
+
+      </md-card>
+    </div>
+</div>

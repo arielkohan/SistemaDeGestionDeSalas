@@ -1,0 +1,76 @@
+/* :host /deep/ lets shadowdom style child elements */
+:host /deep/ {
+    /**
+    * CSS Overrides for bug fixes
+    */
+
+    /**
+    * END CSS Overrides for bug fixes
+    */
+
+    /* Manage list custom styles */
+    .md-sort-item {
+        /deep/ {
+            .md-list-item {
+                padding: 0;
+            }
+        }
+    }
+    .md-sort-icon {
+        font-size: 15px;
+        margin-right: 10px;
+    }
+    .md-sort-header {
+        padding: 10px;
+        &:hover {
+            background-color: #EEEEEE;
+            cursor: pointer;
+        }
+    }
+
+    .total-size{
+        min-height: calc(100vh - 40px);
+        width:100%;
+    }
+
+    .mini-icon{
+        height: 40px;
+    }
+
+
+    div.td-layout-footer{
+        padding:0;
+    }
+    div.footer{
+        padding: 10px;
+
+        a{
+            padding: 5px;
+            text-decoration:none;
+            margin: 0 5px;
+        }
+    }
+
+    .content.md-content{
+        // background: #2196f3  !important; //bgc-blue-500
+        
+
+        background: #457fca; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #457fca , #5691c8); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #457fca , #5691c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+    }
+
+
+    .logout-button{    
+        position: absolute;
+        display: inline-block;
+        right:50px;
+        top: 7px;
+        z-index: 9999999999999999999;
+    }
+
+    md-toolbar-row {
+        height: 70px;
+    }
+}

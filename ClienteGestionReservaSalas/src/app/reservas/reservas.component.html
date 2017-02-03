@@ -1,0 +1,103 @@
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="90">
+      <md-card >
+        <md-card-title layout>
+          <md-input-container class="text-sm" flex>
+            <input [(ngModel)]="buscarInput" type="text" md-input placeholder="Buscar reservas por responsable"/>
+            <span md-prefix><md-icon>search</md-icon></span>
+          </md-input-container>
+          <a [routerLink]="['/reservas/add']" class="header-a">
+            <button md-raised-button color="accent" class="header-button-custom">Nueva Reserva</button>
+          </a>
+        </md-card-title>
+          <div class="grey-color">
+            <md-icon class="custom-position">info</md-icon>
+            <span>Se mostrarán sólo las reservas que correspondan a eventos que esten transcurriendo en
+              este momento o sean posteriores.</span>
+          </div>
+
+
+
+        <td-expansion-panel #expansionOne label="label" sublabel="sublabel"  expand="true"><!-- (expanded)="expandedEvent()" (collapsed)="collapsedEvent()"-->
+        <template td-expansion-panel-header >
+          <h2 class="expansion-header"><md-icon class="" >keyboard_arrow_down</md-icon> 
+            Mis Reservas
+          </h2>
+        </template>
+
+          <md-list class="">
+            <md-list-item>
+              <md-icon md-list-avatar>apps</md-icon>
+              <h3 md-line>Reservas</h3>
+              <span flex></span>
+              <span flex="40" class="md-body-1 tc-grey-500">Cuándo</span>
+              <span flex="20" class="md-body-1 tc-grey-500"></span>
+              <span flex="20" class="md-body-1 tc-grey-500"></span>
+            </md-list-item>
+            <md-list-item *ngIf="reservasDelUsuario.length <= 0">
+              <md-icon md-list-avatar>info</md-icon>
+              <h3 flex>No tienes reservas </h3>
+            </md-list-item>
+            <template let-item="$implicit" let-i="index" let-last="last" ngFor [ngForOf]="reservasDelUsuario | filterReservaByResponsable:buscarInput">
+              <a md-list-item class="pointer list-item" (click)="openDialog(item);">
+                <md-icon md-list-avatar>list</md-icon>
+                <h3 md-line>Sala {{item.salaNombre}}</h3>
+                <p md-line> Ubicacion: {{item.salaUbicacion}} </p>
+                <span flex></span>
+                <span flex="40" class="md-body-1 tc-grey-500">{{item.fechaInicio | date:'d-M-y HH:mm'}}</span>
+                <span flex="20" class="md-body-1 tc-grey-500">
+                  <button md-raised-button  color="default" (click)="$event.stopPropagation();editReserva(item);">
+                    <md-icon class="tc-blue-600">edit</md-icon>
+                  </button>
+                </span>
+                <span flex="20" class="md-body-1 tc-grey-500">
+                  <button md-raised-button class="tc-blue-100" color="warn" (click)="$event.stopPropagation();deleteReserva(item);">
+                    <md-icon class="tc-white"  >delete</md-icon>
+                  </button>
+                </span>
+              </a>
+              <md-divider *ngIf="!last" md-inset></md-divider>
+            </template>
+          </md-list>
+        
+      </td-expansion-panel>
+
+       <td-expansion-panel label="label" sublabel="sublabel"  ><!-- (expanded)="expandedEvent()" (collapsed)="collapsedEvent()"-->
+        <template td-expansion-panel-header >
+          <h2 class="expansion-header"><md-icon class="" >keyboard_arrow_down</md-icon> 
+            Reservas de otros
+          </h2>
+        </template>
+
+          <md-list class="">
+            <md-list-item>
+              <md-icon md-list-avatar>apps</md-icon>
+              <h3 md-line>Reservas</h3>
+              <span flex></span>
+              <span flex="40" class="pad-left md-body-1 tc-grey-500 text-center">Responsable</span>
+              <span flex="40" class="md-body-1 tc-grey-500">Cuándo</span>
+            </md-list-item>
+            <md-list-item *ngIf="reservasDeOtrosUsuarios.length <= 0">
+              <md-icon md-list-avatar>info</md-icon>
+              <h3 flex>No hay reservas de otros empleados. </h3>
+            </md-list-item>
+            <template let-item="$implicit" let-i="index" let-last="last" ngFor [ngForOf]="reservasDeOtrosUsuarios | filterReservaByResponsable:buscarInput">
+              <a md-list-item class="pointer list-item" (click)="openDialog(item);">
+                <md-icon md-list-avatar>list</md-icon>
+                <h3 md-line>Sala {{item.salaNombre}}</h3>
+                <p md-line> Ubicacion: {{item.salaUbicacion}} </p>
+                <span flex></span>
+                <span flex="40" class="md-body-1 tc-grey-500 text-center">{{item.responsableNomYAp}}</span>
+                <span flex="40" class="md-body-1 tc-grey-500">{{item.fechaInicio | date:'d-M-y HH:mm'}}</span>
+                
+              </a>
+              <md-divider *ngIf="!last" md-inset></md-divider>
+            </template>
+          </md-list>
+        
+      </td-expansion-panel>
+
+
+      </md-card>
+    </div>
+</div>

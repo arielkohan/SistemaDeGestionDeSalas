@@ -1,0 +1,21 @@
+<button *ngIf="loggedIn" md-fab color="accent" class="logout-button " (click)="logout()"><md-icon>exit_to_app</md-icon> </button>
+<td-layout #layout sidenavTitle="Menú" logo="" class="bgc-blue-400" >
+  <md-nav-list menu-items>
+    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
+      <td-notification-count *ngIf="item.title == 'Encuestas'" color="accent" [notifications]="encuestasPendientes"> 
+        <md-icon>
+          {{item.icon}}
+        </md-icon>
+      </td-notification-count>
+      <md-icon *ngIf="item.title != 'Encuestas'">
+        {{item.icon}}
+      </md-icon>
+      {{item.title}}
+    </a>
+  </md-nav-list>
+  <td-layout-nav toolbarTitle="Gestion de reservas" >
+      <!---->
+  		<router-outlet class="bgc-blue-500"></router-outlet>
+    
+  </td-layout-nav>
+</td-layout>

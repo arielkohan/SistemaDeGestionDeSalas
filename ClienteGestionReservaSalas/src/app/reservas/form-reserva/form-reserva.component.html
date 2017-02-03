@@ -1,0 +1,157 @@
+<md-progress-bar *ngIf="loading" color="primary" mode="indeterminate"></md-progress-bar>
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="70">
+      <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+        <md-card-title layout>
+          {{ (esEditar) ? "Editar Reserva" : "Crear Reserva"}}
+        </md-card-title>
+        <md-divider></md-divider>
+				<md-card-content>
+					<td-steps  mode="'vertical'"><!-- (stepChange)="change($event)" -->
+						<td-step [active]="true" [state]="stepOneState">
+							<template td-step-label><span>Horario, motivo, servicios.</span></template>
+								<form class="form" (ngSubmit)="onSubmit()" #reservaForm="ngForm" >
+									<div layout-gt-xs="row">
+									<div flex-gt-xs="40">
+										<md-input-container flex>
+											<input md-input placeholder="Fecha" type="date" 
+											name="fechaReserva"
+											required
+											minDateToday=""
+											[(ngModel)]="fechaReserva"
+											>
+										</md-input-container>
+										 <div  class="alert alert-danger">
+											 <md-chip *ngIf="formErrors.fechaReserva" color="warn" selected="true">
+												{{ formErrors.fechaReserva }}
+											 </md-chip>
+										</div>
+									</div>
+									<div flex-gt-xs="30">
+										<md-input-container flex>
+											<input md-input placeholder="Hora Inicio" type="time" 
+											name="horaIngreso"
+											required
+											ngChange="horaEgreso.updateValueAndValidity();"
+											[(ngModel)]="horaIngreso"
+											#horaIngresoInput="ngModel"
+											oneHourAfterTime="horaEgreso"
+											reverse="true"
+											> <!-- min-hour-now="" PENSAR COMO PONERLO YA QUE DEPENDERA SI EL DIA ES EL MISMO QUE HOY.-->
+										</md-input-container>
+										<div  class="alert alert-danger">
+											 <md-chip *ngIf="formErrors.horaIngreso" color="warn" selected="true">
+												{{ formErrors.horaIngreso }}
+											 </md-chip>
+										</div>
+									</div>
+									<div flex-gt-xs="30">
+										<md-input-container flex>
+											<input md-input placeholder="Hora Fin" type="time" 
+											name="horaEgreso"
+											required
+											oneHourAfterTime="horaIngreso"
+											[(ngModel)]="horaEgreso"
+											#horaEgresoInput="ngModel"
+											reverse="false"
+											>
+										</md-input-container>
+										 <div  class="alert alert-danger">
+											 <md-chip *ngIf="formErrors.horaEgreso" color="warn" selected="true">
+												{{ formErrors.horaEgreso }}
+											 </md-chip>
+										</div>
+									</div>
+								</div>
+									<div layout-gt-md="row">
+										<div flex-gt-md="50">
+											<md-input-container flex class="full-width margin-cantidad-personas">
+												<input type="number" md-input placeholder="Cantidad de Personas" 
+												name="cantidadPersonas"
+												required
+												min="1"
+												[(ngModel)]="cantidadPersonas">
+											</md-input-container>
+											<div  class="alert alert-danger">
+											 <md-chip *ngIf="formErrors.cantidadPersonas" color="warn" selected="true">
+												{{ formErrors.cantidadPersonas }}
+											 </md-chip>
+										</div>
+										</div>
+										<div flex-gt-md="50" class="text-center">
+											<label class="margin"><strong>Servicios.</strong></label>
+											<md-checkbox mdTooltip="Café, Mate." mdTooltipPosition="below" 
+											[(ngModel)]="servicio"
+											 name="servicio">
+												Servicio Basico
+											</md-checkbox>
+											<md-checkbox 
+											[(ngModel)]="almuerzo"
+											name="almuerzo">
+												Almuerzo
+											</md-checkbox>
+											<md-checkbox
+											[(ngModel)]="proyector"
+											name="proyector">
+												Proyector
+											</md-checkbox>
+										</div>
+									</div>
+								<div layout="row">
+									<md-select placeholder="Tipo de Sala" [(ngModel)]="tipoSala" name="tipoSala"  class="full-width"
+									required 
+									>
+										<md-option *ngFor="let tipo of tipos" [value]="tipo">
+											{{tipo.descripcion}}
+										</md-option>
+									</md-select>
+									<div  class="alert alert-danger">
+										<md-chip *ngIf="formErrors.tipoSala" color="warn" selected="true">
+											{{ formErrors.tipoSala }}
+										</md-chip>
+									</div>
+								</div>
+								<div layout="row">
+										<md-input-container flex class="textarea-margin">
+											<textarea md-input placeholder="Motivo" 
+											name="motivo"
+											required
+											[(ngModel)]="motivo"></textarea>
+										</md-input-container>
+									</div>
+									<div  class="alert alert-danger">
+											<md-chip *ngIf="formErrors.motivo" color="warn" selected="true">
+											{{ formErrors.motivo }}
+											</md-chip>
+									</div>
+								</form>
+						  </td-step>
+						  <td-step [state]="stepTwoState" [disabled]="! reservaForm.valid" (activated)="buscarSalas(reservaForm);stepOneComplete();">
+						  <template td-step-label><span>Selección de sala.</span></template>
+								<md-list>
+									<md-nav-list>
+										<template let-item let-last="last" ngFor [ngForOf]="salas">
+											<a md-list-item (click)="sala = item; stepTwoComplete();" [ngClass]="{'active': sala && sala.salaID == item.salaID}">
+												 {{item.nombre}}
+												 <md-icon class="custom-position">check</md-icon>
+											</a>
+											<md-divider *ngIf="!last"></md-divider>
+										</template>
+									</md-nav-list>
+
+								</md-list>
+						  </td-step>
+						</td-steps>
+
+					</md-card-content>
+	    	<!-- <md-divider></md-divider> -->
+					<md-card-actions class="text-right">
+						<a [routerLink]="['/reservas']">
+							<button tabindex="-1" type="button" md-raised-button class="">ATRAS</button>
+						</a>
+						<button type="submit" (click)="reservar()" md-raised-button color="accent" class="" [disabled]="!reservaForm.valid || ! sala">{{(esEditar) ? "EDITAR" : "CREAR"}}</button>
+					</md-card-actions>
+			  
+      </md-card>
+    </div>
+</div>

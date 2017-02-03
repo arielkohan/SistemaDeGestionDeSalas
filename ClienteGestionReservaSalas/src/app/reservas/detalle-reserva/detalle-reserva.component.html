@@ -1,0 +1,64 @@
+<h3 md-dialog-title >ID de la reserva: {{reserva.reservaID}}</h3>
+<md-dialog-content>
+	<div layout-gt-xs="row">
+	  	<div flex-gt-xs="50">
+	  		<p><strong class=" ">Sala:</strong> 
+	  			{{reserva.salaNombre }}
+	  		</p>
+  		</div>
+	  	<div flex-gt-xs="50">
+	  		<p><strong class=" ">Responsable:</strong> 
+	  			{{reserva.responsableNomYAp}}
+	  		</p>
+		</div>
+	</div>
+	<div layout-gt-xs="row">
+	  	<div flex-gt-xs="50">
+	  		<p><strong class=" ">Inicio:</strong> 
+	  			{{reserva.fechaInicio | date:'d-M-y HH:mm'}}
+	  		</p>
+  		</div>
+	  	<div flex-gt-xs="50">
+	  		<p><strong class=" ">Fin:</strong> 
+	  			{{reserva.fechaFin | date:'d-M-y HH:mm'}}
+	  		</p>
+		</div>
+	</div>
+	<div layout-gt-xs="row">
+	  	<div flex-gt-xs="50">
+	  		<p><strong class=" ">Cantidad de personas:</strong> 
+	  			{{reserva.cantidadPersonas }}
+	  		</p>
+  		</div>
+	  	<div flex-gt-xs="50">
+	  		<p><strong class=" ">Ubicación de la sala:</strong> 
+	  			{{reserva.salaUbicacion}}
+	  		</p>
+		</div>
+	</div>
+	<div class="row">
+		<div flex-gt-md="100" class="text-center">
+			<md-checkbox mdTooltip="Café, Mate." mdTooltipPosition="below" 
+			[(ngModel)]="reserva.salaServicio"
+			disabled
+				name="servicio">
+				Servicio Basico
+			</md-checkbox>
+			<md-checkbox 
+			[(ngModel)]="reserva.almuerzo"
+			disabled
+			name="almuerzo">
+				Almuerzo
+			</md-checkbox>
+			<md-checkbox
+			[(ngModel)]="reserva.proyector"
+			disabled
+			name="proyector">
+				Proyector
+			</md-checkbox>
+		</div>
+	</div>
+</md-dialog-content>
+<md-dialog-actions layout="row" layout-align="end center">
+  <button md-button md-dialog-close>Close</button>
+</md-dialog-actions>

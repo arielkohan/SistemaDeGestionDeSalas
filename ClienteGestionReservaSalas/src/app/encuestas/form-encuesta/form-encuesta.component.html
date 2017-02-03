@@ -1,0 +1,19 @@
+<md-progress-bar *ngIf="loading" color="primary" mode="indeterminate"></md-progress-bar>
+<div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
+    <div flex-gt-xs="70">
+      <md-card >
+        <md-card-title layout>
+         Llenar Encuesta
+        </md-card-title>
+        <md-divider></md-divider>
+
+        <td-dynamic-forms #form [elements]="preguntasElements" ngClass="formEncuesta">
+
+        </td-dynamic-forms>
+        <md-card-actions class="text-right">
+						<a [routerLink]="['/encuestas']"><button tabindex="-1" type="button" md-raised-button class="">ATRAS</button></a>
+						<button [disabled]="(! form.valid) || submit" type="submit" (click)="responderEncuesta(form)" md-raised-button color="accent" class="" >RESPONDER</button>
+					</md-card-actions>
+   </md-card>
+    </div>
+</div>
