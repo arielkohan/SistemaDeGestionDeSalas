@@ -1,0 +1,67 @@
+﻿using GestionSalasAPI.Models;
+using ModelReservaSalas.modelo;
+using ModelReservaSalas.Servicios;
+using RepositoriesGestionReservaSalas;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using Microsoft.AspNet.Identity;
+
+namespace GestionSalasAPI.Controllers
+{
+    public class ReservasController : ApiController
+    {
+        private ReservaRepository reservaRepository;
+        private ReservarService reservarService;
+
+        public ReservasController()
+        {
+            this.reservaRepository = new ReservaRepository();
+            this.reservarService = new ReservarService(reservaRepository, new SalaRepository(), new EmpleadoRepository());
+        }
+
+        // GET: api/Reservas
+        public IEnumerable<Reserva> Get(Boolean especificasDelEmpleado = false) //valor por defecto FALSE, por defecto se buscan todas las reservas
+        {
+            IEnumerable<Reserva> result = reservarService.getReservas(especificasDelEmpleado);
+            return result;
+        }
+
+        // GET: api/Reservas/5
+        public Reserva Get(int id)
+        {
+            //TODO: Decidir si hay que chequear si pertenece al empleado con la sesion actual o no
+            return reservaRepository.findById(id);
+        }
+
+        [Route("api/Reservas/salas-disponibles")]
+        [HttpGet]
+        public IEnumerable<Sala> GetSalasParaReservar(DateTime ingresoSala, DateTime egresoSala, int tipoSalaID, int cantidadPersonas)
+        {
+            return reservarService.getSalasParaReservar(ingresoSala, egresoSala, tipoSalaID, cantidadPersonas);
+        }
+
+        // POST: api/Reservas
+        [Route("api/Reservas")]
+        [HttpPost]
+        public void Post([FromBody]Reserva r)
+        {
+            ApplicationUser user = (ApplicationUser) RequestContext.Principal;
+            int empleadoID = user.EmpleadoID;
+            reservarService.Reservar(r, empleadoID);
+        }
+
+        // PUT: api/Reservas/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Reservas/5
+        public void Delete(int id)
+        {
+        }
+    }
+}
