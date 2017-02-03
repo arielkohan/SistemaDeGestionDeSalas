@@ -1,0 +1,14 @@
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\ModelReservaSalas.dll
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\ModelReservaSalas.pdb
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\obj\Debug\ModelReservaSalas.dll
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\obj\Debug\ModelReservaSalas.pdb
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\obj\Debug\ModelReservaSalas.csprojResolveAssemblyReference.cache
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\ModelReservaSalas.dll.config
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\EntityFramework.dll
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\EntityFramework.xml
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\akohan\Documents\Visual Studio 2015\Projects\ModelReservaSalas\ModelReservaSalas\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

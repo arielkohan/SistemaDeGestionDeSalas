@@ -1,0 +1,7 @@
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\bin\Debug\RepositoriosMock.dll
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\bin\Debug\RepositoriosMock.pdb
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\bin\Debug\ModelReservaSalas.dll
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\bin\Debug\ModelReservaSalas.pdb
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\obj\Debug\RepositoriosMock.csprojResolveAssemblyReference.cache
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\obj\Debug\RepositoriosMock.dll
+c:\users\akohan\documents\visual studio 2015\Projects\ModelReservaSalas\RepositoriosMock\obj\Debug\RepositoriosMock.pdb
