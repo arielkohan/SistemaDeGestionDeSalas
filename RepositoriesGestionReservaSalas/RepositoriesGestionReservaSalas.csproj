@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EBC008FC-BE4D-4D20-A79E-34E9F2AD3C95}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RepositoriesGestionReservaSalas</RootNamespace>
+    <AssemblyName>RepositoriesGestionReservaSalas</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\ModelReservaSalas\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\ModelReservaSalas\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EncuestaRepository.cs" />
+    <Compile Include="GestionReservasContext.cs" />
+    <Compile Include="EmpleadoRepository.cs" />
+    <Compile Include="Migrations\201701121414457_initRepo.cs" />
+    <Compile Include="Migrations\201701121414457_initRepo.Designer.cs">
+      <DependentUpon>201701121414457_initRepo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131335438_add-capacidad-Sala.cs" />
+    <Compile Include="Migrations\201701131335438_add-capacidad-Sala.Designer.cs">
+      <DependentUpon>201701131335438_add-capacidad-Sala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131338545_add-capacidad-Salas.cs" />
+    <Compile Include="Migrations\201701131338545_add-capacidad-Salas.Designer.cs">
+      <DependentUpon>201701131338545_add-capacidad-Salas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131416276_add-PreguntasToContext.cs" />
+    <Compile Include="Migrations\201701131416276_add-PreguntasToContext.Designer.cs">
+      <DependentUpon>201701131416276_add-PreguntasToContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131422463_rm-PreguntasFromEncuesta.cs" />
+    <Compile Include="Migrations\201701131422463_rm-PreguntasFromEncuesta.Designer.cs">
+      <DependentUpon>201701131422463_rm-PreguntasFromEncuesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701181544383_nullable-EncuestaFK.cs" />
+    <Compile Include="Migrations\201701181544383_nullable-EncuestaFK.Designer.cs">
+      <DependentUpon>201701181544383_nullable-EncuestaFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701201424115_adding-Dbsets.cs" />
+    <Compile Include="Migrations\201701201424115_adding-Dbsets.Designer.cs">
+      <DependentUpon>201701201424115_adding-Dbsets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701201502499_Update-Dbsets.cs" />
+    <Compile Include="Migrations\201701201502499_Update-Dbsets.Designer.cs">
+      <DependentUpon>201701201502499_Update-Dbsets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701241435205_Fix-model-fk-nullable2.cs" />
+    <Compile Include="Migrations\201701241435205_Fix-model-fk-nullable2.Designer.cs">
+      <DependentUpon>201701241435205_Fix-model-fk-nullable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701241450240_Fix-model-fk-nullable3.cs" />
+    <Compile Include="Migrations\201701241450240_Fix-model-fk-nullable3.Designer.cs">
+      <DependentUpon>201701241450240_Fix-model-fk-nullable3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701241453584_Fix-model-fk-nullable4.cs" />
+    <Compile Include="Migrations\201701241453584_Fix-model-fk-nullable4.Designer.cs">
+      <DependentUpon>201701241453584_Fix-model-fk-nullable4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701241510136_Fix-model-fk-nullable5.cs" />
+    <Compile Include="Migrations\201701241510136_Fix-model-fk-nullable5.Designer.cs">
+      <DependentUpon>201701241510136_Fix-model-fk-nullable5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701271348490_addRequiredToPregunta.cs" />
+    <Compile Include="Migrations\201701271348490_addRequiredToPregunta.Designer.cs">
+      <DependentUpon>201701271348490_addRequiredToPregunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701271446158_removeRequiredFromRespuesta-Respuesta.cs" />
+    <Compile Include="Migrations\201701271446158_removeRequiredFromRespuesta-Respuesta.Designer.cs">
+      <DependentUpon>201701271446158_removeRequiredFromRespuesta-Respuesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservaRepository.cs" />
+    <Compile Include="SalaRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelReservaSalas\ModelReservaSalas\ModelReservaSalas.csproj">
+      <Project>{94dce24b-59e4-4776-97c0-131f76abeb7d}</Project>
+      <Name>ModelReservaSalas</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="insert.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701121414457_initRepo.resx">
+      <DependentUpon>201701121414457_initRepo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131335438_add-capacidad-Sala.resx">
+      <DependentUpon>201701131335438_add-capacidad-Sala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131338545_add-capacidad-Salas.resx">
+      <DependentUpon>201701131338545_add-capacidad-Salas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131416276_add-PreguntasToContext.resx">
+      <DependentUpon>201701131416276_add-PreguntasToContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131422463_rm-PreguntasFromEncuesta.resx">
+      <DependentUpon>201701131422463_rm-PreguntasFromEncuesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701181544383_nullable-EncuestaFK.resx">
+      <DependentUpon>201701181544383_nullable-EncuestaFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701201424115_adding-Dbsets.resx">
+      <DependentUpon>201701201424115_adding-Dbsets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701201502499_Update-Dbsets.resx">
+      <DependentUpon>201701201502499_Update-Dbsets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701241435205_Fix-model-fk-nullable2.resx">
+      <DependentUpon>201701241435205_Fix-model-fk-nullable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701241450240_Fix-model-fk-nullable3.resx">
+      <DependentUpon>201701241450240_Fix-model-fk-nullable3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701241453584_Fix-model-fk-nullable4.resx">
+      <DependentUpon>201701241453584_Fix-model-fk-nullable4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701241510136_Fix-model-fk-nullable5.resx">
+      <DependentUpon>201701241510136_Fix-model-fk-nullable5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701271348490_addRequiredToPregunta.resx">
+      <DependentUpon>201701271348490_addRequiredToPregunta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701271446158_removeRequiredFromRespuesta-Respuesta.resx">
+      <DependentUpon>201701271446158_removeRequiredFromRespuesta-Respuesta.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
